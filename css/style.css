@@ -48,6 +48,15 @@ body {
     overflow-y: scroll;
     background-color: var(--bg-color);
 }
+html {
+    scroll-snap-type: y mandatory;
+    scroll-snap-stop: always;
+    /* -webkit-scroll-snap-type: y mandatory;
+    -ms-scroll-snap-type: y mandatory; */
+    /* -webkit-scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    -ms-scroll-behavior: smooth; */
+}
 .headline {
     font-family: var(--montserrat);
     font-size: var(--headline-size);
@@ -121,12 +130,34 @@ body {
     width: 90%;
     overflow-y: hidden;
 }
+
+
 .main {
     width: 100%;
     margin-top: 95px;
     height: 85vh;
-    overflow-y: scroll;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scroll-snap-stop: always;
+    scroll-behavior: smooth;
 }
+
+.section {
+    height:100%;
+    scroll-snap-align: start;
+    opacity: 0;
+    transition: all 500ms ease;
+    /* -webkit-scroll-snap-align: start;
+    -ms-scroll-snap-aloghn: start; */
+}
+.visible {
+    opacity: 1;
+    transition: all 500ms ease;
+}
+
+/* SCROLL */
+
+
 /* .main {
     width: 100%;
 } */
@@ -248,7 +279,7 @@ body {
 .decorative-features__block_top
 .decorative-features__lines_right
 .decorative-features__line_horizontal {
-    width: 700px;
+    width: 630px;
 }
 .decorative-features__block_bottom
 .decorative-features__lines_left
@@ -274,9 +305,7 @@ body {
 /* BLOCK STYLES */
 
 
-.section {
-    height:100%;
-}
+
 
 /* HERO SECTION */
 
