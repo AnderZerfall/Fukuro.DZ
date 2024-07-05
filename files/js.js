@@ -1,4 +1,5 @@
 // SCROLL ANIMATION PROVIDED BY ME
+'use strict'
 {
     let main = document.getElementById("main");             // get the scrolled main container
     let sections = document.querySelectorAll(".section");   // get all sections within the container
@@ -14,7 +15,11 @@
 
             if ((mainScroll >= sectionTop)                  // if the top border is under the scroll border
                 && (mainScroll <= sectionBottom)) {         // while the bottom border is over it
-                section.classList.add("visible");           // then show the block
+                    
+                function ChangeClass() {
+                    section.classList.add("visible")
+                }
+                setTimeout(ChangeClass, 500);           // then show the block
             }
             else {
                 section.classList.remove("visible");        // if it's not, then hide it
