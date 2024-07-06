@@ -74,84 +74,67 @@
 
 {
     let slides = document.querySelectorAll(".card");
+    let timebars = document.querySelectorAll(".card__timebar");
     let slidesNumber = slides.length - 1;
     let slider = document.querySelector(".slider__container");
     let index = 0;
+    let interval = 3000;
 
     slides[0].style.opacity = "1";
 
-    function InitializeSlides() {
-        let cloneFirst = slides[0].cloneNode(true);
-        let cloneLast = slides[slidesNumber].cloneNode(true);
+    function SliderTimer(seconds, timebar) {
 
-        slider.appendChild(cloneFirst);
-        slider.insertBefore(cloneLast, slides[0]);
+        let startDate = new Date();
+        let endDate = new Date();
+        endDate = endDate.setSeconds(endDate.setSeconds() + seconds);
+        let leftTime = endDate - startDate;
+        let timer = setInterval( function() {
+            let currentDate = new Date();
+            console.log("current " + currentDate);
+            let leftPercent = Math.trunc((endDate - currentDate) / leftTime * 100);
+            console.log("left: " + leftPercent);
+            let passedPercent = 100 - leftPercent;
+            console.log(passedPercent);
+            timebar.style.width = passedPercent + "%";
+
+            if (leftPercent == 0) {
+                clearInterval(timer);
+            }
+            console.log("timer");
+        }, 1000);
     }
-    InitializeSlides();
 
     function ChangeSlides() {
-      
-        // if (index > slidesNumber) {
-        //    index = 0;
-        // }
-        // console.log("MOVE: [" + index + "] :" + (slidesNumber - index));
-        // slides[index].style.transform = "translateX(" + (slidesNumber - index) * 100 +"%)";
 
-        // for (let i = 1; i <= slidesNumber; i++) {
-        //     if ((index + i) > slidesNumber) {
-        //         slides[0].style.transform = "translateX(" + (slidesNumber - index) * 120 +"%)";
-        //     }
-        //     else {
-        //         slides[index + i].style.transform = "translateX(-" + (index + 1) * 100 +"%)";
-        //     }
-        // }
-        // for (let i = index; i <= slidesNumber; i++) {
-        //     if (i != slidesNumber) {
-        //         slides[i + 1].style.transform = "translateX(-" + (index + 1) * 100 +"%)";
-        //     }
-        //     else {
-        //         slides[0].style.transform = "translateX(" + (slidesNumber - index) * 120 +"%)";
-        //     }
-        // }
+        if (index > slidesNumber) {
+           index = 0;
+        }
+
+        SliderTimer(interval, timebars[index]);
+
+        slides[index].style.transform = "translateX(" + (slidesNumber - index) * 100 +"%)";
+        slides[index].style.zIndex = "-2";
+        // slides[index].style.opacity = "0";
+
+        for (let i = 1; i <= slidesNumber; i++) {
+            if ((index + i) > slidesNumber) {
+                slides[0].style.transform = "translateX(" + (slidesNumber - index) * 120 +"%)";
+                slides[0].style.zIndex = "1";
+                // slides[0].style.opacity = "1";
+                slides[1].style.transform = "translateX(" + (slidesNumber - index) * 120 +"%)";
+                slides[1].style.zIndex = "1";
+                // slides[1].style.opacity = "1";
+            }
+            else {
+                console.log("gut");
+                slides[index + i].style.transform = "translateX(-" + (index + 1) * 100 +"%)";
+                slides[index + i].style.zIndex = "1";
+                // slides[index + i].style.opacity = "1";
+            }
+        }
 
         index++;
-        // slider.style.transform = "translateX(-" + (25 * (index + 1)) + "%)";
     }
 
-
-    // console.log(index);
-    // if (index === slidesNumber) {
-    //     slides[index].style.transform = "translateX(" + (slidesNumber - index) * 100 +"%)";
-    //     index = 0;
-    //     for (var i = index; i <= slidesNumber; i++) {
-    //         slides[i].style.transform = "translateX(-" + index * 100 +"%)";
-    //     }
-    // }
-    // else {
-    //     slides[index].style.transform = "translateX(" + (slidesNumber - index) * 100 +"%)";
-    //     for (var i = index + 1; i <= slidesNumber; i++) {
-    //         slides[i].style.transform = "translateX(-" + (index + 1) * 100 +"%)";
-    //     }
-    //     index++;
-    // }
-
-    // function ChangeSlides() {
-    //     if (index == slidesNumber) {
-    //         slides[index].style.transform = "translateX(" + (slidesNumber - index) * 100 + "%)";
-           
-    //         index = 0;
-    //         slides[index].style.transform = "translateX(0)";
-          
-    //     }
-    //     else {
-    //         slides[index].style.transform = "translateX(" + (slidesNumber - index) * 100  + "%)";
-    //         slides[index+1].style.transform = "translateX(-" + (index+1) * 100 + "%)" ;
-
-            
-    //         index++;
-    //     }
-       
-    //     console.log(index);
-    // }
-    setInterval(ChangeSlides, 2000);
+    setInterval(ChangeSlides, interval);
 }

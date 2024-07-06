@@ -495,21 +495,17 @@ html {
     align-items: center;
 }
 .card {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     width:660px;
     height:330px;
     border-radius: 20px;
+    opacity: 1;
     /* padding: 2% 5%; */
     background-color: var(--bg-color);
-    transition: all 500ms ease;
-}
-.card:first-child {
-    background-color: #6528b4;
-}
-.card:last-child {
-    background-color: #FFFFFF;
+    transition: transform 1000ms ease-in-out;
 }
 .card:not(:first-child) {
     margin-left: 2%;
@@ -519,4 +515,12 @@ html {
     flex-direction: column;
     width: 85%;
     height: 80%;
+}
+.card__timebar {
+    position: absolute;
+    top:0;
+    width:0%;
+    height: 5px;
+    border-radius: 5px;
+    background-color: var(--accent-color);
 }
