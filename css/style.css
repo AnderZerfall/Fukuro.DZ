@@ -115,19 +115,18 @@ html {
 .wrapper {
     min-height: 100vh;
     overflow-y: hidden;
-    overflow-x: hidden;
     display: flex;
+    align-items: center;
     flex-direction: column;
+    overflow-x: visible;
 }
 
-.wrapper__container {
+.container {
     display: flex;
     flex-direction: column;
-    position: relative;
-    justify-content: center;
-    align-items: center;
     margin: 0 auto;
     width: 90%;
+    height: 100%;
     overflow-y: hidden;
 }
 
@@ -137,23 +136,25 @@ html {
     margin-top: 95px;
     height: 85vh;
     overflow-y: auto;
-    
+    overflow-x: visible;
     scroll-snap-type: y mandatory;
     scroll-snap-stop: always;
     scroll-behavior: smooth;
 }
-main::-webkit-scrollbar {
+.main::-webkit-scrollbar {
     display: none;
 }
 
 .section {
+    position: relative;
     height:100%;
     scroll-snap-align: start;
-    opacity: 0;
+    opacity: 1;
     transition: all 200ms ease;
     /* -webkit-scroll-snap-align: start;
     -ms-scroll-snap-aloghn: start; */
 }
+
 .visible {
     opacity: 1;
     transition: all 1000ms ease;
@@ -427,10 +428,12 @@ main::-webkit-scrollbar {
 .about-section {
     display: flex;
     flex-direction: column;
+    overflow-x: visible;
 }
 .about-section__about-block {
     position: relative;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     /* justify-content: center;
     align-self: center; */
@@ -475,7 +478,45 @@ main::-webkit-scrollbar {
 
 .slider {
     position: absolute;
+    z-index: 3;
+    overflow-x: visible;
+    top:50%;
+    transform: translateY(-55%);
+    right: -50%;
+    /* margin-left: 50%; */
+    width: 100%;
+    transition: all 500ms ease;
+    /* display: flex;
+    flex-direction: row;
+    align-items: center; */
+}
+.slider__container {
     display: flex;
     align-items: center;
-    margin-left: 70%;
+}
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:660px;
+    height:330px;
+    border-radius: 20px;
+    /* padding: 2% 5%; */
+    background-color: var(--bg-color);
+    transition: all 500ms ease;
+}
+.card:first-child {
+    background-color: #6528b4;
+}
+.card:last-child {
+    background-color: #FFFFFF;
+}
+.card:not(:first-child) {
+    margin-left: 2%;
+}
+.card__content {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    height: 80%;
 }
