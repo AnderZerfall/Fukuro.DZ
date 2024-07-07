@@ -76,32 +76,20 @@
     let slides = document.querySelectorAll(".card");
     let timebars = document.querySelectorAll(".card__timebar");
     let slidesNumber = slides.length - 1;
-    let slider = document.querySelector(".slider__container");
     let index = 0;
     let interval = 3000;
 
-    slides[0].style.opacity = "1";
+    function TimeBarAnimation(timebar) {
+        let animation = [
+            {width: "0%"},
+            {width: "95%"}
+        ];
+        let animationSettings = {
+            duration: 3000,
+            itarations: 1
+        }
 
-    function SliderTimer(seconds, timebar) {
-
-        let startDate = new Date();
-        let endDate = new Date();
-        endDate = endDate.setSeconds(endDate.setSeconds() + seconds);
-        let leftTime = endDate - startDate;
-        let timer = setInterval( function() {
-            let currentDate = new Date();
-            console.log("current " + currentDate);
-            let leftPercent = Math.trunc((endDate - currentDate) / leftTime * 100);
-            console.log("left: " + leftPercent);
-            let passedPercent = 100 - leftPercent;
-            console.log(passedPercent);
-            timebar.style.width = passedPercent + "%";
-
-            if (leftPercent == 0) {
-                clearInterval(timer);
-            }
-            console.log("timer");
-        }, 1000);
+        timebar.animate(animation, animationSettings);
     }
 
     function ChangeSlides() {
@@ -109,8 +97,13 @@
         if (index > slidesNumber) {
            index = 0;
         }
-
-        SliderTimer(interval, timebars[index]);
+        if ((index + 1) > timebars.length - 1) {
+            TimeBarAnimation(timebars[0]);
+        }
+        else {
+            TimeBarAnimation(timebars[index + 1]);
+        }
+        
 
         slides[index].style.transform = "translateX(" + (slidesNumber - index) * 100 +"%)";
         slides[index].style.zIndex = "-2";
@@ -123,10 +116,10 @@
                 // slides[0].style.opacity = "1";
                 slides[1].style.transform = "translateX(" + (slidesNumber - index) * 120 +"%)";
                 slides[1].style.zIndex = "1";
+                
                 // slides[1].style.opacity = "1";
             }
             else {
-                console.log("gut");
                 slides[index + i].style.transform = "translateX(-" + (index + 1) * 100 +"%)";
                 slides[index + i].style.zIndex = "1";
                 // slides[index + i].style.opacity = "1";
@@ -134,7 +127,21 @@
         }
 
         index++;
+        console.log("index " + index);
+        return index;
     }
 
+    TimeBarAnimation(timebars[0]);
     setInterval(ChangeSlides, interval);
+    // setInterval(function() {
+    //     let inx = ChangeSlides();
+        
+    //     if (inx > timebars.length - 1) {
+    //         TimeBarAnimation(timebars[0]);
+    //     }
+    //     else {
+    //         TimeBarAnimation(timebars[inx]);
+    //     }
+       
+    // }, interval);
 }
