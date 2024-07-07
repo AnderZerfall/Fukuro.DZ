@@ -77,7 +77,7 @@
     let timebars = document.querySelectorAll(".card__timebar");
     let slidesNumber = slides.length - 1;
     let index = 0;
-    let interval = 3000;
+    let interval = 5000;
 
     function TimeBarAnimation(timebar) {
         let animation = [
@@ -85,7 +85,7 @@
             {width: "95%"}
         ];
         let animationSettings = {
-            duration: 3000,
+            duration: interval,
             itarations: 1
         }
 
@@ -104,28 +104,21 @@
             TimeBarAnimation(timebars[index + 1]);
         }
         
-
+        slides[index].style.zIndex = "-3";
         slides[index].style.transform = "translateX(" + (slidesNumber - index) * 100 +"%)";
-        slides[index].style.zIndex = "-2";
-        // slides[index].style.opacity = "0";
 
         for (let i = 1; i <= slidesNumber; i++) {
             if ((index + i) > slidesNumber) {
-                slides[0].style.transform = "translateX(" + (slidesNumber - index) * 120 +"%)";
-                slides[0].style.zIndex = "1";
-                // slides[0].style.opacity = "1";
-                slides[1].style.transform = "translateX(" + (slidesNumber - index) * 120 +"%)";
-                slides[1].style.zIndex = "1";
-                
-                // slides[1].style.opacity = "1";
+                for (let j = 0; j <= slidesNumber-1; j++) {
+                    slides[j].style.zIndex = "1";
+                    slides[j].style.transform = "translateX(" + (slidesNumber - index) * 120 +"%)";
+                }
             }
             else {
-                slides[index + i].style.transform = "translateX(-" + (index + 1) * 100 +"%)";
                 slides[index + i].style.zIndex = "1";
-                // slides[index + i].style.opacity = "1";
+                slides[index + i].style.transform = "translateX(-" + (index + 1) * 100 +"%)";
             }
         }
-
         index++;
         console.log("index " + index);
         return index;
@@ -133,15 +126,4 @@
 
     TimeBarAnimation(timebars[0]);
     setInterval(ChangeSlides, interval);
-    // setInterval(function() {
-    //     let inx = ChangeSlides();
-        
-    //     if (inx > timebars.length - 1) {
-    //         TimeBarAnimation(timebars[0]);
-    //     }
-    //     else {
-    //         TimeBarAnimation(timebars[inx]);
-    //     }
-       
-    // }, interval);
 }
