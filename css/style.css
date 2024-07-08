@@ -312,13 +312,48 @@ html {
 .decorative-features__line_horizontal {
     width: 90px;
 }
-.decorative-features__ticker {
+.decorative-features__ticker-box {
     width: 100%;
     height: 100%;
     overflow: hidden;
     display: flex;
     margin-top: -0.6%;
+    position: relative;
 }
+.decorative-features__ticker-box_bottom {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+}
+.decorative-features__ticker {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    mask:url(#mask-1);
+}
+.decorative-features__ticker_bottom{
+    mask:url(#mask-2);
+}
+/* .decorative-features__ticker::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width:100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(to right, #56249D, #ffffff00, #2E136E);
+    filter: blur(10px);
+} */
+ .decorative-features__mask-svg{
+    position: absolute;
+    width: 100%;
+ }
+ .ticker__text {
+    transition: all 500ms ease;
+ }
 .decorative-features__ticker_bottom {
     margin-bottom: -0.6%;
 }
@@ -328,16 +363,31 @@ html {
     letter-spacing: 5px;
     color: var(--text-color);
     white-space: nowrap;
-    animation: scroll 10s linear infinite;
 }
-@keyframes scroll {
+.decorative-features__ticker-text_1 {
+    animation: scroll1 20s linear infinite;
+    animation-delay: -20s;
+}
+.decorative-features__ticker-text_2 {
+    animation: scroll2 20s linear infinite;
+    animation-delay: -10s;
+}
+@keyframes scroll1 {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+@keyframes scroll2 {
     from {
       transform: translateX(0);
     }
     to {
-        transform: translateX(calc(-100% - 20px));
+        transform: translateX(-200%);
     }
-  }
+}
 
 /* DECORATIVE CIRCLES */
 .decorative-features__block_circles {
@@ -356,6 +406,7 @@ html {
     height: 564px;
     top:-25%;
     left: -25%;
+    animation: circleAnimationReverse 15s ease-in-out infinite ;
 }
 .decorative-features__circles_left .decorative-features__circle_small {
     position: absolute;
@@ -370,13 +421,37 @@ html {
     height: 578px;
     top:-18%;
     right:-25%;
+    animation: circleAnimation 15s ease-in-out infinite ;
 }
 .decorative-features__circles_right .decorative-features__circle_small {
     position: absolute;
     bottom: 5%;
     left: 30%;
     width: 15%;
-    height: 15%
+    height: 15%;
+}
+
+@keyframes circleAnimation {
+    0% {
+        transform: rotate(0);
+    }
+    50% {
+        transform: rotate(45deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+@keyframes circleAnimationReverse {
+    0% {
+        transform: rotate(0);
+    }
+    50% {
+        transform: rotate(-45deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
 }
 
 

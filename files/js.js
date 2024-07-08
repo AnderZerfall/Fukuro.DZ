@@ -127,3 +127,57 @@
     TimeBarAnimation(timebars[0]);
     setInterval(ChangeSlides, interval);
 }
+
+// FADE OUT TEXT ON THE TICKER
+// {
+//     let ticker = document.querySelector(".decorative-features__ticker");
+//     let spans = document.querySelectorAll(".ticker__text");
+//     let tickerSize = ticker.getBoundingClientRect();
+//     let index = 0;
+
+//     function FadeOut() {
+//         if (index == spans.length - 1) {
+//             index = 0;
+//         }
+//         console.log(spans[index].offsetLeft);
+//         if (spans[index].offsetLeft < 100) {
+//             spans[index].style.opacity = "0";
+//         }
+//         else {
+//             spans[index].style.opacity = "1";
+//         }
+//         index++;
+//     }
+//     FadeOut();
+//     setInterval(FadeOut, 100);
+// }
+// {
+//     let spans = document.querySelectorAll(".ticker__text");
+//     let index = 0;
+
+//     let fadeOut = [
+//         { opacity: "1"},
+//         { opacity: "0"}
+//     ];
+//     let fadeOutSettings = {
+//         duration: 500,
+//         iterations: "infinite",
+//     }
+
+//     function FadeOut() {
+//         if (index == spans.length - 1) {
+//             index = 0;
+//         }
+//         if (index != 0) {
+//             spans[index - 1].animate(fadeOut, fadeOutSettings);    
+//         }   
+//         else {
+//             spans[spans.length - 1].animate(fadeOut, fadeOutSettings);
+            
+//         }
+       
+//         spans[index].animate(fadeOut, fadeOutSettings);
+//         index++;
+//     }
+//     setInterval(FadeOut, 500);
+// }
