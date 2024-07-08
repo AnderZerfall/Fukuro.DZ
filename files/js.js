@@ -20,7 +20,8 @@
 //                 function ChangeClass() {
 //                     section.classList.add("visible")
 //                 }
-//                 setTimeout(ChangeClass, 500);           // then show the block
+//                 ChangeClass();  
+//                 // setTimeout(ChangeClass, 500);           // then show the block
 //             }
 //             else {
 //                 section.classList.remove("visible");        // if it's not, then hide it
@@ -74,6 +75,7 @@
 
 {
     let slides = document.querySelectorAll(".card");
+    let slider = document.querySelector(".slider__container");
     let timebars = document.querySelectorAll(".card__timebar");
     let slidesNumber = slides.length - 1;
     let index = 0;
@@ -120,13 +122,14 @@
             }
         }
         index++;
-        console.log("index " + index);
         return index;
     }
 
     TimeBarAnimation(timebars[0]);
     setInterval(ChangeSlides, interval);
+   
 }
+
 
 // FADE OUT TEXT ON THE TICKER
 // {
