@@ -148,7 +148,17 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentImage = 0;
 
         images[currentImage].style.display = "block";
+        preloader.style.display = "none";
         linkText.innerHTML = images[currentImage].alt;
+
+        // PRELOADER
+        function RemovePreloader() {
+            console.log("function executed");
+            setTimeout(function() {
+                console.log("hide");
+                 preloader.style.display = "none";
+            }, 500);
+        }
 
         function OpenNext() {
             preloader.style.display = "block";
@@ -160,9 +170,9 @@ document.addEventListener('DOMContentLoaded', () => {
             else {
                 currentImage++;
             }
-            RemovePreloader();
             images[currentImage].style.display = "block";
             linkText.innerHTML = images[currentImage].alt;
+            RemovePreloader();
         }
         function OpenPrev() {
             preloader.style.display = "block";
@@ -181,15 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         next.addEventListener('click', OpenNext);
         prev.addEventListener('click', OpenPrev);
-
-        // PRELOADER
-        function RemovePreloader() {
-            console.log("function executed");
-            setTimeout(function() {
-                preloader.style.display = "none";
-            }, 100);
-        }
-        
     }
 });
 // SCROLL ANIMATION PROVIDED BY ME
