@@ -17,6 +17,7 @@
     --bg-div-color: linear-gradient(to right, #2C2C6A, #606097);
     --bg-color: #161647;
     --shadow-dark: #07051a31;
+    --search-bar-bg: #40408a79;
 
     /* FONTS */
     --montserrat:"Montserrat", sans-serif;
@@ -742,41 +743,80 @@ html {
     position: relative;
     width: 95%;
     height: 100%;
-    background-color: #2C2C6A;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(30px);
+    box-shadow: 0 15px 50px var(--shadow-dark);
     margin-top: 3%;
     border-radius: 25px 25px 0px 0px;
 }
 .case-window__nav {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-basis: 100%;
     height: 60px;
-    width: 100%;
+    justify-content: center;
 }
 .case-window__container {
-    width: 100%;
-    height: 100%;
     display: flex;
+    flex-basis: 95%;
     justify-content: space-between;
     align-items: center;
 }
 .case-window__search-bar {
-    width:70%;
-    background-color: var(--bg-color);
+    display: flex;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+    width:85%;
+    background-color: var(--search-bar-bg);
     height: 60%;
     border-radius: 25px 25px 25px 25px;
 }
-.case-window__next {
-
-}
-.case-window__prev {
-
+.case-window__search-link {
+    font-size: var(--link-size);
+    color: var(--line-color);
+    font-family: var(--montserrat);
+    font-weight: 400;
 }
 .case-window__icons {
     display: flex;
+    align-items: center;
+    flex: 1 0 auto;
 }
-.case-window__icon:not() {
-    margin-left: 5%;
+.case-window__icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    transition: all 200ms ease;
+}
+.case-window__icons_left .case-window__icon .case-window__icon-svg :hover {
+    fill: var(--accent-color);
+    transition: all 200ms ease;
+}
+.case-window__icon:hover {
+    transform: scale(1.1);
+    transition: all 200ms ease;
+}
+/* .case-window__icons_left .case-window__icon .case-window__icon-svg  {
+    fill: #585090;
+    transition: all 500ms ease;
+} */
+.case-window__icon-svg_next {
+    max-width: 100%;
+}
+.case-window__icon-svg_prev {
+    max-width: 100%;
+    transform: scaleX(-1);
+}
+.case-window__icons_right {
+    justify-content: flex-end;
+    margin-left: 3%;
+}
+.case-window__icons_left {
+    justify-content: flex-start;
+    margin-right: 3%;
+}
+.case-window__icon:not(:first-child) {
+    margin-left: 24px;
 }
 .case-window__icon_hide {
     width:14px;
