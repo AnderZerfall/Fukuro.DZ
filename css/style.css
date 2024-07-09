@@ -137,9 +137,9 @@ html {
     margin: 0 auto;
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
     width: 90%;
     height: 100%;
-    overflow-y: hidden;
 }
 
 
@@ -160,6 +160,7 @@ html {
 .section {
     position: relative;
     height:100%;
+    overflow-y: scroll;
     scroll-snap-align: start;
     opacity: 1;
     transition: all 200ms ease;
@@ -342,6 +343,7 @@ html {
  }
  .ticker__text {
     transition: all 500ms ease;
+    overflow-x: hidden;
  }
  .decorative-features__ticker_top {
     mask:url(#mask-1);
@@ -729,7 +731,12 @@ html {
 }
 
 /* CASE SECTION */
-
+.cases-section__container {
+    justify-content: flex-start;
+}
+.cases-section__content-block {
+    transition: all 500ms ease-in-out;
+}
 .cases-section__text-block {
     display: flex;
     align-items: center;
@@ -740,15 +747,31 @@ html {
     max-width: 490px;;
 }
 .case-window {
+    /* overflow: hidden; */
     position: relative;
-    overflow: hidden;
     width: 95%;
-    height: 100%;
+    height: 95%;
     background-color: var(--card-bg);
     backdrop-filter: blur(30px);
     box-shadow: 0 15px 50px var(--shadow-dark);
     margin-top: 3%;
-    border-radius: 25px 25px 0px 0px;
+    border-radius: 25px 25px 25px 25px;
+    transition: all 500ms ease-in-out;
+}
+.case-window__container {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 0px 25px 25px;
+    overflow-y: hidden;
+}
+.case-window__content {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 0px 25px 25px;
+    overflow-y: scroll;
+}
+.case-window__img {
+    max-width: 100%;
 }
 .case-window__nav {
     display: flex;
@@ -756,19 +779,11 @@ html {
     height: 60px;
     justify-content: center;
 }
-.case-window__container {
+.case-window__header-container {
     display: flex;
     flex-basis: 95%;
     justify-content: space-between;
     align-items: center;
-}
-.case-window__content {
-    width: 100%;
-    overflow-y: hidden;
-}
-.case-window__img {
-    width: 100%;
-    object-fit: cover;
 }
 .case-window__search-bar {
     display: flex;

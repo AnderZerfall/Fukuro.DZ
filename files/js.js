@@ -130,6 +130,37 @@
    
 }
 
+{
+    // let main = document.getElementById("main");
+    let section = document.querySelector(".cases-section__container");
+    let caseWindow = document.querySelector(".case-window");
+    let tips = document.querySelector(".cases-section__content-block");
+    let prevPos = section.scrollTop;
+
+    function HideTips(event) {
+        event.preventDefault();
+
+        console.log("gut");
+        console.log(section.scrollTop);
+        let currentPos = section.scrollTop;
+
+        if (currentPos > prevPos) {
+            tips.style.transform = "translateY(" + 100 + "%)";
+            tips.style.opacity = 0;
+            caseWindow.style.transform = "translateY(-" + 3 +"%)";
+            // caseWindow.scrollTo(0,43);
+        }
+        else {
+            tips.style.transform = "translateY(" + 0 + "%)";
+            tips.style.opacity = 1;
+            caseWindow.style.transform = "translateY(" + 0 +"%)";
+        }
+        prevPos = currentPos;
+    }
+
+    section.onscroll = HideTips;
+}
+
 
 // FADE OUT TEXT ON THE TICKER
 // {
