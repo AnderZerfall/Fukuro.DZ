@@ -771,6 +771,7 @@ html {
     overflow-y: scroll;
 }
 .case-window__img {
+    display: none;
     max-width: 100%;
 }
 .case-window__nav {

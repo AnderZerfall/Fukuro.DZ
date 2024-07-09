@@ -130,8 +130,9 @@
    
 }
 
+// CASE SECTION SCROLL
+
 {
-    // let main = document.getElementById("main");
     let section = document.querySelector(".cases-section__container");
     let caseWindow = document.querySelector(".case-window");
     let tips = document.querySelector(".cases-section__content-block");
@@ -158,7 +159,46 @@
         prevPos = currentPos;
     }
 
-    section.onscroll = HideTips;
+    section.addEventListener('scroll', HideTips);
+}
+
+// CASE SECTION PORTFOLIO BLOCK
+
+{
+    let next = document.getElementById('next');
+    let prev = document.getElementById('prev');
+    let images = document.querySelectorAll(".case-window__img");
+    let currentImage = 0;
+    
+    images[currentImage].style.display = "block";
+
+    function OpenNext() {
+        images[currentImage].style.display = "none";
+
+        if (currentImage == images.length - 1) {
+            currentImage = 0;
+        }
+        else {
+            currentImage++;
+        }
+       
+        images[currentImage].style.display = "block";
+    }
+    function OpenPrev() {
+        images[currentImage].style.display = "none";
+
+        if (currentImage == 0) {
+            currentImage = images.length - 1;
+        }
+        else {
+            currentImage--;
+        }
+
+        images[currentImage].style.display = "block";
+    }
+
+    next.addEventListener('click', OpenNext);
+    prev.addEventListener('click', OpenPrev);
 }
 
 
