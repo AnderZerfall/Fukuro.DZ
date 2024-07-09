@@ -168,9 +168,11 @@
     let next = document.getElementById('next');
     let prev = document.getElementById('prev');
     let images = document.querySelectorAll(".case-window__img");
+    let linkText = document.querySelector(".case-window__case-name");
     let currentImage = 0;
-    
+
     images[currentImage].style.display = "block";
+    linkText.innerHTML = images[currentImage].alt;
 
     function OpenNext() {
         images[currentImage].style.display = "none";
@@ -183,6 +185,7 @@
         }
        
         images[currentImage].style.display = "block";
+        linkText.innerHTML = images[currentImage].alt;
     }
     function OpenPrev() {
         images[currentImage].style.display = "none";
@@ -195,6 +198,7 @@
         }
 
         images[currentImage].style.display = "block";
+        linkText.innerHTML = images[currentImage].alt;
     }
 
     next.addEventListener('click', OpenNext);
