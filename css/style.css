@@ -741,6 +741,7 @@ html {
 }
 .case-window {
     position: relative;
+    overflow: hidden;
     width: 95%;
     height: 100%;
     background-color: var(--card-bg);
@@ -760,6 +761,14 @@ html {
     flex-basis: 95%;
     justify-content: space-between;
     align-items: center;
+}
+.case-window__content {
+    width: 100%;
+    overflow-y: hidden;
+}
+.case-window__img {
+    width: 100%;
+    object-fit: cover;
 }
 .case-window__search-bar {
     display: flex;
