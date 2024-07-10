@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if ((index + i) > slidesNumber) {
                     for (let j = 0; j <= slidesNumber-1; j++) {
                         slides[j].style.zIndex = "1";
-                        slides[j].style.transform = "translateX(" + (slidesNumber - index) * 120 +"%)";
+                        slides[j].style.transform = "translateX(" + (slidesNumber - index) * 100 +"%)";
                     }
                 }   
                 else {
