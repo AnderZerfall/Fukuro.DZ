@@ -192,6 +192,78 @@ document.addEventListener('DOMContentLoaded', () => {
         next.addEventListener('click', OpenNext);
         prev.addEventListener('click', OpenPrev);
     }
+
+    // SKILLS ANIMATION. SHOW UTILITY PERCENTAGE
+    {
+        let container = document.querySelector(".skills__content");
+        
+        function AnimateSkills(boxSize) {
+            let skillsAnimation = [
+                { width: "0"},
+                { width: boxSize}
+            ];
+            let skillsAnimationSettings = {
+                duration: 500,
+                iterations: 1
+            }
+
+            return [skillsAnimation, skillsAnimationSettings];
+        }
+
+        container.addEventListener('mouseover', (event) => {
+            if (event.target.className == "skills__utility") {
+                let percentage = event.target.querySelector(".skills__percentage").textContent;
+                let [anim, set] = AnimateSkills(percentage);
+                event.target.animate(anim, set);
+                event.target.width = percentage;
+            }
+        });
+
+        container.addEventListener('mouseleave', (event) => {
+            if (event.target.className == "skills__utility") {
+                event.target.style.width = "0%";
+            }
+        });
+    }
+
+    // SCROLL ANIMATION PROVIDED BY ME
+    {
+        let main = document.getElementById("main");             // get the scrolled main container
+        let sections = document.querySelectorAll(".section");   // get all sections within the container
+        sections[0].classList.add("visible");                   // the first section is always visible
+
+        function RevealSection() {
+            console.log("event initialized");
+            sections.forEach(section => {
+
+                let sectionTop = section.offsetTop;             // top border of the section
+                let sectionBottom = section.offsetTop + section.scrollHeight;   // bottom border of the section
+                let mainScroll = main.scrollTop + main.offsetTop;               // Scroll border (including the top margin of the main container)
+                console.log("Entered the cycle");
+                if ((mainScroll >= sectionTop)                  // if the top border is under the scroll border
+                    && (mainScroll <= sectionBottom)) {         // while the bottom border is over it
+                    console.log("the block is in view area");
+                    function ChangeClass() {
+                        console.log("class changed");
+                        section.classList.add("visible")
+                    }
+                    ChangeClass();  
+                    // setTimeout(ChangeClass, 500);           // then show the block
+                }
+                else {
+                    console.log("removed class");
+                    section.classList.remove("visible");        // if it's not, then hide it
+                }
+            });
+        }
+
+        main.addEventListener('scroll', RevealSection);
+    }
+
+
+
+
+
 });
 // SCROLL ANIMATION PROVIDED BY ME
 // {
