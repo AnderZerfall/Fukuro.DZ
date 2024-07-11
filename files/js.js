@@ -196,6 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // SKILLS ANIMATION. SHOW UTILITY PERCENTAGE
     {
         let container = document.querySelector(".skills__content");
+        let animationTime = 500;
         
         function AnimateSkills(boxSize) {
             let skillsAnimation = [
@@ -203,52 +204,77 @@ document.addEventListener('DOMContentLoaded', () => {
                 { width: boxSize}
             ];
             let skillsAnimationSettings = {
-                duration: 500,
-                iterations: 1
+                duration: animationTime,
+                iterations: 1,
+                easing: "ease-out"
+                // timing(animationTime) {
+                //     return 1 - Math.pow(1 - animationTime, 5);
+                // }
             }
-
             return [skillsAnimation, skillsAnimationSettings];
         }
-
-        container.addEventListener('mouseover', (event) => {
-            if (event.target.className == "skills__utility") {
-                let percentage = event.target.querySelector(".skills__percentage").textContent;
+        container.addEventListener('mousemove', (event) => {
+            console.log("event registered");
+            if (event.target.className == "skills__skill-box") {
+                console.log("target is found");
+                let percentage = event.target.querySelector(".skills__utility").querySelector(".skills__percentage").textContent;
                 let [anim, set] = AnimateSkills(percentage);
-                event.target.animate(anim, set);
-                event.target.width = percentage;
-            }
-        });
+                event.target.querySelector(".skills__utility").animate(anim, set);
+                event.target.querySelector(".skills__utility").style.width = percentage;
+                event.target.querySelector(".skills__utility").style.opacity = 1;
 
-        container.addEventListener('mouseleave', (event) => {
-            if (event.target.className == "skills__utility") {
-                event.target.style.width = "0%";
+                
+                event.target.addEventListener('mouseleave', (event) => {
+                    event.target.querySelector(".skills__utility").style.width = "0%";
+                    event.target.querySelector(".skills__utility").style.opacity = 0;
+                });
+
+                event.target.stopPropagation();
             }
+            else {
+                console.log(event.target);
+            }
+            // else if (event.target.className == "skills__utility") {
+            //     let percentage = event.target.querySelector(".skills__percentage").textContent;
+            //     event.target.style.opacity = 0;
+            //     let [anim, set] = AnimateSkills(percentage);
+            //     event.target.animate(anim, set);
+            //     event.target.style.width = percentage;
+            // }
+            // container.addEventListener('mouseout', (event) => {
+            //     if (event.target.className == "skills__skill-box") {
+            //         console.log("traget is deleted");
+            //         event.target.querySelector(".skills__utility").style.width = "0%";
+            //         event.target.querySelector(".skills__utility").style.opacity = 0;
+            //     }
+            // });
         });
+        
     }
 
     // SCROLL ANIMATION PROVIDED BY ME
     {
         let main = document.getElementById("main");             // get the scrolled main container
         let sections = document.querySelectorAll(".section");   // get all sections within the container
+        let safezone = 10;
         sections[0].classList.add("visible");                   // the first section is always visible
 
         function RevealSection() {
             console.log("event initialized");
             sections.forEach(section => {
-
                 let sectionTop = section.offsetTop;             // top border of the section
                 let sectionBottom = section.offsetTop + section.scrollHeight;   // bottom border of the section
                 let mainScroll = main.scrollTop + main.offsetTop;               // Scroll border (including the top margin of the main container)
                 console.log("Entered the cycle");
-                if ((mainScroll >= sectionTop)                  // if the top border is under the scroll border
-                    && (mainScroll <= sectionBottom)) {         // while the bottom border is over it
+                console.log("main: " + mainScroll);
+                if ((mainScroll + safezone >= sectionTop)                // if the top border is under the scroll border
+                    && (mainScroll + safezone <= sectionBottom)) {         // while the bottom border is over it
                     console.log("the block is in view area");
                     function ChangeClass() {
                         console.log("class changed");
                         section.classList.add("visible")
                     }
-                    ChangeClass();  
-                    // setTimeout(ChangeClass, 500);           // then show the block
+                    ChangeClass();      // then show the block
                 }
                 else {
                     console.log("removed class");
