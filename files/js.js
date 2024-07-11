@@ -228,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     event.target.querySelector(".skills__utility").style.width = "0%";
                     event.target.querySelector(".skills__utility").style.opacity = 0;
                 });
-
                 event.target.stopPropagation();
             }
             else {

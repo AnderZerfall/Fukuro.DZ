@@ -726,10 +726,10 @@ html {
         width: 100%;
     }
 }
-.skills__skill-box:hover .skills__utility {
+/* .skills__skill-box:hover .skills__utility {
     opacity: 1;
     transition: all 500ms ease;
-}
+} */
 .skills__skill-box:hover .skills__skills-name {
     /* color: var(--headline-color); */
     opacity: 0;
