@@ -86,13 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         
             slides[index].style.zIndex = "-3";
-            slides[index].style.transform = "translateX(" + (slidesNumber - index) * 100 +"%)";
+            slides[index].style.transform = "translateX(" + (slidesNumber - index) * 120 +"%)";
 
             for (let i = 1; i <= slidesNumber; i++) {
                 if ((index + i) > slidesNumber) {
                     for (let j = 0; j <= slidesNumber-1; j++) {
                         slides[j].style.zIndex = "1";
-                        slides[j].style.transform = "translateX(" + (slidesNumber - index) * 100 +"%)";
+                        slides[j].style.transform = "translateX(" + (slidesNumber - index) * 120 +"%)";
                     }
                 }   
                 else {
@@ -197,7 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
     {
         let container = document.querySelector(".skills__content");
         let animationTime = 500;
-        
+        let isAnimPlayed = false;
+
         function AnimateSkills(boxSize) {
             let skillsAnimation = [
                 { width: "0"},
@@ -213,25 +214,61 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             return [skillsAnimation, skillsAnimationSettings];
         }
+
+        function ShowScorebar(bar) {
+            let percentage = bar.querySelector(".skills__utility").querySelector(".skills__percentage").textContent;
+            let [anim, set] = AnimateSkills(percentage);
+
+            bar.querySelector(".skills__utility").animate(anim, set);
+            bar.querySelector(".skills__utility").style.width = percentage;
+            bar.querySelector(".skills__utility").style.opacity = 1;
+
+            return true;
+        }
+        function HideScorebar(bar) {
+            bar.querySelector(".skills__utility").style.width = "0%";
+            bar.querySelector(".skills__utility").style.opacity = 0;
+
+            return false;
+        }
+
         container.addEventListener('mousemove', (event) => {
             console.log("event registered");
-            if (event.target.className == "skills__skill-box") {
-                console.log("target is found");
-                let percentage = event.target.querySelector(".skills__utility").querySelector(".skills__percentage").textContent;
-                let [anim, set] = AnimateSkills(percentage);
-                event.target.querySelector(".skills__utility").animate(anim, set);
-                event.target.querySelector(".skills__utility").style.width = percentage;
-                event.target.querySelector(".skills__utility").style.opacity = 1;
 
+            if (event.target.className == "skills__skill-box") {
+                if (isAnimPlayed != true) {
+                    console.log("target is found");
                 
+                    
+                    isAnimPlayed = ShowScorebar(event.target);;
+                }
                 event.target.addEventListener('mouseleave', (event) => {
-                    event.target.querySelector(".skills__utility").style.width = "0%";
-                    event.target.querySelector(".skills__utility").style.opacity = 0;
+                    
+                    isAnimPlayed = HideScorebar(event.target);;
                 });
-                event.target.stopPropagation();
+                // event.target.stopPropagation();
             }
             else {
                 console.log(event.target);
+
+                function FindParent(child) {
+                    if (child.parentNode.className == "skills__skill-box") {
+                        if(isAnimPlayed != true) {
+                            isAnimPlayed = ShowScorebar(child.parentNode);;
+                        }
+                    }
+                    else {
+                        return FindParent(child.parentNode);
+                    }
+                }
+
+
+                if (event.target.className != "skills__content") {
+                    FindParent(event.target);
+                }
+               
+
+              
             }
             // else if (event.target.className == "skills__utility") {
             //     let percentage = event.target.querySelector(".skills__percentage").textContent;

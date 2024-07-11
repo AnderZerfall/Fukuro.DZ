@@ -6,7 +6,7 @@
 
     /* COLORS */
     --accent-color: #A353FF;
-    --shadow-color: #9351F4;
+    --shadow-color: #9251f481;
     --line-color: #8989C5;
     --button-hover-color: linear-gradient(to left, #DD70FE, #9F55F6);
     --headline-color: #FFFFFF;
@@ -532,6 +532,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    mix-blend-mode: overlay;
 }
 .hero-section__logo-blob-content {
     width: 55px;
@@ -560,9 +561,31 @@ html {
 }
 .hero-section__logo {
     margin-top: 3%;
+    position: relative;
 }
 .hero-section__logo-img {
     max-width: 100%;
+    z-index: 1;
+    mix-blend-mode: overlay;
+}
+.hero-section__logo-img_bg {
+    position: absolute;
+    top:0;
+    left:0;
+    opacity: 0.4;
+}
+.hero-section__logo-img_shadow {
+    position: absolute;
+    top:0;
+    left:0;
+    filter: blur(30px);
+    opacity: 0.5;
+}
+.hero-section__logo-img_outline {
+    position: absolute;
+    mix-blend-mode: normal;
+    top:-5%;
+    z-index: 2;
 }
 .socials__item {
     transform: scale(1);
@@ -781,9 +804,9 @@ html {
     box-shadow: 0 15px 50px var(--shadow-dark);
     z-index: 1;
 }
-.card:last-child {
-    margin-right: 2%;
-}
+/* .card:not(:first-child) {
+    margin-left: 2%;
+} */
 .card:hover {
     background: var(--card-bg-hover);
     border: 1.5px solid #3D3778;
