@@ -234,18 +234,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container.addEventListener('mousemove', (event) => {
             console.log("event registered");
+            let skill = event.target;
 
             if (event.target.className == "skills__skill-box") {
                 if (isAnimPlayed != true) {
+                    skill = event.target;
                     console.log("target is found");
-                
-                    
                     isAnimPlayed = ShowScorebar(event.target);;
                 }
-                event.target.addEventListener('mouseleave', (event) => {
-                    
-                    isAnimPlayed = HideScorebar(event.target);;
-                });
                 // event.target.stopPropagation();
             }
             else {
@@ -256,20 +252,24 @@ document.addEventListener('DOMContentLoaded', () => {
                         if(isAnimPlayed != true) {
                             isAnimPlayed = ShowScorebar(child.parentNode);;
                         }
+
+                        skill = child.parentNode;
                     }
                     else {
                         return FindParent(child.parentNode);
                     }
                 }
-
-
                 if (event.target.className != "skills__content") {
                     FindParent(event.target);
-                }
-               
-
-              
+                }           
             }
+
+            if (skill.className == "skills__skill-box") {
+                skill.addEventListener('mouseleave', () => {
+                    isAnimPlayed = HideScorebar(skill);
+                });
+            }
+          
             // else if (event.target.className == "skills__utility") {
             //     let percentage = event.target.querySelector(".skills__percentage").textContent;
             //     event.target.style.opacity = 0;
