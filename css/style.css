@@ -557,11 +557,11 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
     margin-top: 3%;
 }
 .hero-section__logo {
-    width: 100%;
     margin-top: 3%;
     position: relative;
 }
