@@ -199,21 +199,20 @@ document.addEventListener('DOMContentLoaded', () => {
     //TIPS
 
     {
-        const container = document.querySelector('.case-window__image');
+        const container = document.querySelector('.case-window__content');
         const tips = document.querySelector('.case-window__tip');
-
+        
         function ShowTip(tip) {
-            tip.style.display = "block";
+            tip.classList.add('tip-is-shown');
         }
         function HideTip(tip) {
-            tip.style.display = "none";
+            tip.classList.remove('tip-is-shown');
         }
         function MoveTip(event) {
-            let containerSize = container.getBoundingClientRect();
-            let cursorX = (event.clientX - blob.offsetWidth) / containerSize.left * 100;
-            let cursorY = (event.clientY - blob.offsetHeight) / containerSize.top * 100;
-
-            tips.style.transform = "translate("+ cursorX +"px," + cursorY + "px)";
+            let cursorX = event.pageX / window.innerWidth * 100;
+            let cursorY = event.pageY / window.innerHeight * 100;
+            tips.style.left = cursorX + '%';
+            tips.style.top = cursorY + '%';
         }
 
         container.addEventListener('mouseover', ShowTip.bind(null, tips));
@@ -346,32 +345,87 @@ document.addEventListener('DOMContentLoaded', () => {
     // MOBILE HEADER
 
     {
-        const burger = document.querySelector(".header__burger");
-        const links = document.querySelectorAll(".nav__link");
+        const burger = document.querySelector('.header__burger');
+        const links = document.querySelectorAll('.nav__link');
 
         burger.addEventListener('click', () => {
            
-            let menu = document.querySelector(".nav");
-            let bg = document.querySelector(".header__bg-on-mobile");
+            let menu = document.querySelector('.nav');
+            let bg = document.querySelector('.header__bg-on-mobile');
 
-            if (menu.className.includes("is-active") === true) {
-                menu.classList.remove("is-active");
-                bg.classList.remove("is-active");
-                burger.classList.remove("is-pressed");
+            if (menu.className.includes('is-active') === true) {
+                menu.classList.remove('is-active');
+                bg.classList.remove('is-active');
+                burger.classList.remove('is-presse');
             }
             else {
-                menu.classList.add("is-active");
-                bg.classList.add("is-active");
-                burger.classList.add("is-pressed");
+                menu.classList.add('is-active');
+                bg.classList.add('is-active');
+                burger.classList.add('is-pressed');
                 
                 links.forEach(link => {
                     link.addEventListener('click', () => {
-                        menu.classList.remove("is-active");
-                        bg.classList.remove("is-active");
-                        burger.classList.remove("is-pressed");
+                        menu.classList.remove('is-active');
+                        bg.classList.remove('is-active');
+                        burger.classList.remove('is-pressed');
                     });
                 })
             }
         });
+    }
+
+
+    // SEND CONTACT FORM
+
+    {
+        const contactForm = document.querySelector('.form');
+
+        async function SendForm(form) {
+            if(ValidateForm(form) === true) {
+
+                // let formData = new formData(form);
+
+                // let response = await fetch('sendmail.php', {
+                //     method: 'POST',
+                //     body: formData
+                // });
+
+                // if (response.ok) {
+                //     let result = await response.json();
+                //     alert(result.message);
+                //     formPreview.innerHTML = '';
+                //     form.reset();
+                // }
+                // else {
+                //     alert('Error');
+                // }
+            }
+        }
+
+        function EmailCheck(email) {
+            let re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+
+            return re.test(email.toLowerCase());
+        }
+
+        function ValidateForm(form) {
+            let fields = form.querySelectorAll('._req');
+            let hasPassed = true;
+
+            fields.forEach(field => {
+                if (field.value === '') {
+                    hasPassed = false;
+                }
+                else if (field.className.includes('email') === true) {
+                    hasPassed = EmailCheck(field.value);
+                }
+            });
+
+            if (hasPassed === false) {
+                alert('form is empty');
+            }
+        }
+
+        contactForm.addEventListener('submit', SendForm.bind(null, contactForm));
     }
 });
