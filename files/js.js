@@ -330,15 +330,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (menu.className.includes("is-active") === true) {
                 menu.classList.remove("is-active");
                 bg.classList.remove("is-active");
+                burger.classList.remove("is-pressed");
             }
             else {
                 menu.classList.add("is-active");
                 bg.classList.add("is-active");
-
+                burger.classList.add("is-pressed");
+                
                 links.forEach(link => {
                     link.addEventListener('click', () => {
                         menu.classList.remove("is-active");
                         bg.classList.remove("is-active");
+                        burger.classList.remove("is-pressed");
                     });
                 })
             }
