@@ -200,17 +200,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     {
         const container = document.querySelector('.case-window__image');
-        const tip = document.querySelector('.case-window__tip');
+        const tips = document.querySelector('.case-window__tip');
 
-        function ShowTip() {
+        function ShowTip(tip) {
             tip.style.display = "block";
         }
-        function HideTip() {
+        function HideTip(tip) {
             tip.style.display = "none";
         }
+        function MoveTip(tip) {
+            tip.style.transform = "translate("+ cursorX +"%," + cursorY + "%)";
+        }
 
-        container.addEventListener('mouseover', ShowTip);
-        container.addEventListener('mouseleave', HideTip);
+        container.addEventListener('mouseover', ShowTip.bind(null, tips));
+        container.addEventListener('mouseleave', HideTip.bind(null, tips));
+        container.addEventListener('mousemove', MoveTip.bind(null, tips));
     }
 
     // SKILLS ANIMATION. SHOW UTILITY PERCENTAGE
