@@ -1532,8 +1532,6 @@ body {
     .about-section__about-block {
         flex: 1;
     }
-    
-    
 }
 @media (max-width: 340px) {
 
