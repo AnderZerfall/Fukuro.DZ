@@ -152,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // CASE SECTION PORTFOLIO BLOCK
 
     {
-        const container = document.querySelector('.case-window__image');
         const next = document.getElementById('next');
         const nextMobile = document.getElementById('next-2');
         const prev = document.getElementById('prev');
@@ -195,6 +194,23 @@ document.addEventListener('DOMContentLoaded', () => {
         next.addEventListener('click', OpenNext.bind(null, images, linkText));
         nextMobile.addEventListener('click', OpenNext.bind(null, images, linkText));
         prev.addEventListener('click', OpenPrev.bind(null, images, linkText));
+    }
+    
+    //TIPS
+
+    {
+        const container = document.querySelector('.case-window__image');
+        const tip = document.querySelector('.case-window__tip');
+
+        function ShowTip() {
+            tip.style.display = "block";
+        }
+        function HideTip() {
+            tip.style.display = "none";
+        }
+
+        container.addEventListener('mouseover', ShowTip);
+        container.addEventListener('mouseleave', HideTip);
     }
 
     // SKILLS ANIMATION. SHOW UTILITY PERCENTAGE

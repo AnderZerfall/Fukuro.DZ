@@ -1006,11 +1006,11 @@ body {
     display: none;
 }
 .case-window__tip {
+     display: none;
     position: absolute;
     top: 0;
     left: 0;
     border-radius: 10px;
-    /* display: none; */
     height: 36px;
     background-color: var(--bg-color);
     padding: 0 2%;
