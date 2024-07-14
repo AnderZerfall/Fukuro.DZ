@@ -210,10 +210,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         function MoveTip(event) {
             let containerSize = container.getBoundingClientRect();
-            let cursorX = (event.clientX - blob.offsetWidth) / containerSize.left * 100 - 60;
-            let cursorY = (event.clientY - blob.offsetHeight) / containerSize.top * 100 - 100;
+            let cursorX = (event.clientX - blob.offsetWidth) / containerSize.left * 100;
+            let cursorY = (event.clientY - blob.offsetHeight) / containerSize.top * 100;
 
-            tips.style.transform = "translate("+ cursorX +"%," + cursorY + "%)";
+            tips.style.transform = "translate("+ cursorX +"px," + cursorY + "px)";
         }
 
         container.addEventListener('mouseover', ShowTip.bind(null, tips));
