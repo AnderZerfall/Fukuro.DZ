@@ -316,4 +316,24 @@ document.addEventListener('DOMContentLoaded', () => {
         main.addEventListener('scroll', RevealSection);
     }
 
+    // MOBILE HEADER
+
+    {
+        const burger = document.querySelector(".header__burger");
+        let menu = document.querySelector(".nav");
+
+        burger.addEventListener('click', () => {
+            console.log("event is triggered");
+
+            if (menu.className.includes("is-active") == true) {
+                console.log("hide");
+                menu.classList.remove("is-active");
+            }
+            else {
+                console.log("show");
+                menu.classList.add("is-active");
+            }
+        });
+    }
+
 });
