@@ -1013,9 +1013,19 @@ body {
     /* display: none; */
     height: 36px;
     background-color: var(--bg-color);
+    padding: 0 2%;
 }
 .case-window__tip-message-block {
-    padding: 5% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.case-window__tip-message {
+    text-align: center;
+    font-family: var(--montserrat);
+    color: var(--text-color);
+    font-size: var(--small-text);
 }
 
 
