@@ -133,6 +133,7 @@ body {
     font-weight: bold;
     color: var(--headline-color);
     line-height: var(--headline-line-height);
+    margin-bottom: 5%;
 }
 .text {
     font-family: var(--montserrat);
@@ -681,9 +682,6 @@ body {
     flex-direction: column;
     height: 100%;
 }
-.about-section__headline {
-    margin-bottom: 12px;
-}
 .about-section__text-block {
     max-width: 490px;
 }
@@ -852,6 +850,10 @@ body {
 }
 
 /* CASE SECTION */
+
+.cases-section__headline {
+    margin-bottom: 0;
+}
 .cases-section__container {
     justify-content: flex-start;
 }
@@ -998,9 +1000,6 @@ body {
 
 
 /* CONTACT SECTION */
-.contact-section__headline {
-    margin-bottom: 12px;
-}
 .contact-section__text-block {
     max-width: 490px;
 }
@@ -1297,6 +1296,22 @@ body {
 
 }
 @media (max-width: 440px) {
+
+    :root {
+    
+        /* FONT SIZES */
+
+        --headline-size: 6rem;
+        --headline-line-height: 6rem;
+        --small-headline-size: 1.25rem;
+        --logo-size: 1.25rem;
+        --text-size: 0.875rem;
+        --subtitle-size: 0.8rem;
+        --link-size: 0.8rem;
+        --small-text: 0.8rem;
+    }
+
+
     html {
         scroll-snap-type: y mandatory;
         scroll-behavior: smooth;
@@ -1309,6 +1324,10 @@ body {
     }
     .hero-section__content-block {
         margin-top: 36px;
+    }
+    .headline {
+        text-align: center;
+        margin-bottom: 10%;
     }
     .section {
         opacity: 1;
@@ -1401,23 +1420,14 @@ body {
     .about-section__about-block {
         justify-content: center;
     }
-    .about-section__headline {
+    .about-section__text, .cases-section__text, .contact-section__text {
         text-align: center;
-    }
-    .about-section__text {
-        text-align: center;
+        margin-bottom: 15%;
     }
     .cases-section__text-block {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    }
-    .cases-section__headline {
-        text-align: center;
-        margin-bottom: 12px;
-    }
-    .cases-section__text {
-        text-align: center;
     }
     .case-window {
         flex: 1;
@@ -1454,12 +1464,6 @@ body {
     .contact-section__contact {
         flex-direction: column;
         height: auto;
-    }
-    .contact-section__headline {
-        text-align: center;
-    }
-    .contact-section__text {
-        text-align: center;
     }
     .contact-section__socials {
         justify-content: center;
@@ -1518,6 +1522,17 @@ body {
     .section:not(:first-child) {
         margin-top: 100px;
     }
+    .hero-section__text {
+        max-width: 300px;
+    }
+    .about-section__content-block {
+        margin: 0;
+        flex: 1;
+    }
+    .about-section__about-block {
+        flex: 1;
+    }
+    
     
 }
 @media (max-width: 340px) {
