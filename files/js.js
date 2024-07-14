@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // PRELOADER
 
-    const mainPreloader = document.querySelector(".preloader");
+    const mainPreloader = document.querySelector('.preloader');
 
     window.onload = () => {
         setTimeout(function () {
-            mainPreloader.style.display = "none";
+            mainPreloader.style.display = 'none';
         }, 100);
     }
 
@@ -21,19 +21,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // BLOB ANIMATION
 
     {
-        const blob = document.getElementById("blob");
-        const blobContainer = document.querySelector(".hero-section__logo-blob");
-        const blobSection = document.querySelector(".hero-section");
+        const blob = document.getElementById('blob');
+        const blobContainer = document.querySelector('.hero-section__logo-blob');
+        const blobSection = document.querySelector('.hero-section');
 
         function MoveBlobByMouse(event) {
             let [cursorX, cursorY] = FindCursorPosition(event);
-            blob.style.transition = "all 100ms ease";
-            blob.style.transform = "translate(" + cursorX + "%," + cursorY + "%)";
+            blob.style.transition = 'all 100ms ease';
+            blob.style.transform = 'translate(' + cursorX + '%,' + cursorY + '%)';
         }
 
         function BlobReset() {
-            blob.style.transition = "all 500ms ease";
-            blob.style.transform = "translate(0)";
+            blob.style.transition = 'all 500ms ease';
+            blob.style.transform = 'translate(0)';
         }
 
         function FindCursorPosition(event) {
@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function ClickOnEye(event) {
             let [cursorX, cursorY] = FindCursorPosition(event);
-            blob.style.transform = "translate("+ cursorX +"%," + cursorY + "%)" + " scaleY(0.2)";
+            blob.style.transform = 'translate('+ cursorX +'%,' + cursorY + '%)' + ' scaleY(0.2)';
             setTimeout(function() {
-                blob.style.transform = "translate("+ cursorX +"%," + cursorY + "%)" + " scaleY(1)";
+                blob.style.transform = 'translate('+ cursorX +'%,' + cursorY + '%)' + ' scaleY(1)';
             }, 100); 
         }
 
@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // SLIDER ANIMATION
 
     {
-        const slides = document.querySelectorAll(".card");
-        const timebars = document.querySelectorAll(".card__timebar");
+        const slides = document.querySelectorAll('.card');
+        const timebars = document.querySelectorAll('.card__timebar');
         
         let slidesNumber = slides.length - 1;
         let index = 0;
@@ -70,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function TimeBarAnimation(timebar) {
             let animation = [
-                {width: "0%"},
-                {width: "95%"}          // 95% - the size of full timebar, including padding
+                {width: '0%'},
+                {width: '95%'}          // 95% - the size of full timebar, including padding
             ];
             let animationSettings = {
                 duration: interval,
@@ -94,19 +94,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 TimeBarAnimation(timebars[index + 1]);
             }
         
-            slides[index].style.zIndex = "-3";
-            slides[index].style.transform = "translateX(" + (slidesNumber - index) * 115 +"%)";
+            slides[index].style.zIndex = '-3';
+            slides[index].style.transform = 'translateX(' + (slidesNumber - index) * 115 +'%)';
 
             for (let i = 1; i <= slidesNumber; i++) {
                 if ((index + i) > slidesNumber) {
                     for (let j = 0; j <= (slidesNumber - 1); j++) {
-                        slides[j].style.zIndex = "1";
-                        slides[j].style.transform = "translateX(" + (slidesNumber - index) * 115 +"%)";
+                        slides[j].style.zIndex = '1';
+                        slides[j].style.transform = 'translateX(' + (slidesNumber - index) * 115 + '%)';
                     }
                 }   
                 else {
-                    slides[index + i].style.zIndex = "1";
-                    slides[index + i].style.transform = "translateX(-" + (index + 1) * 100 +"%)";
+                    slides[index + i].style.zIndex = '1';
+                    slides[index + i].style.transform = 'translateX(-' + (index + 1) * 100 +'%)';
                 }
             }
 
@@ -123,25 +123,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // CASE SECTION SCROLL
 
     {
-        const section = document.querySelector(".cases-section__container");
+        const section = document.querySelector('.cases-section__container');
         let prevPos = section.scrollTop;
 
         function HideTips(event) {
 
             event.preventDefault();
 
-            const caseWindow = document.querySelector(".case-window");
-            const tips = document.querySelector(".cases-section__content-block");    
+            const caseWindow = document.querySelector('.case-window');
+            const tips = document.querySelector('.cases-section__content-block');    
 
             let currentPos = section.scrollTop;
 
             if (currentPos > prevPos) {
-                tips.classList.add("is-hidden");
-                caseWindow.classList.add("is-shown");
+                tips.classList.add('is-hidden');
+                caseWindow.classList.add('is-shown');
             }
             else {
-                tips.classList.remove("is-hidden");
-                caseWindow.classList.remove("is-shown");
+                tips.classList.remove('is-hidden');
+                caseWindow.classList.remove('is-shown');
             }
             prevPos = currentPos;
         }
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentImage = 0;
 
         function OpenNext(img, text) {
-            img[currentImage].style.display = "none";
+            img[currentImage].style.display = 'none';
 
             if (currentImage === img.length - 1) {
                 currentImage = 0;
@@ -170,12 +170,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentImage++;
             }
 
-            img[currentImage].style.display = "block";
+            img[currentImage].style.display = 'block';
             text.innerHTML = img[currentImage].alt;
         }
 
         function OpenPrev(img, text) {
-            img[currentImage].style.display = "none";
+            img[currentImage].style.display = 'none';
 
             if (currentImage === 0) {
                 currentImage = img.length - 1;
@@ -184,11 +184,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentImage--;
             }
 
-            img[currentImage].style.display = "block";
+            img[currentImage].style.display = 'block';
             text.innerHTML = img[currentImage].alt;
         }
         
-        images[currentImage].style.display = "block";
+        images[currentImage].style.display = 'block';
         linkText.innerHTML = images[currentImage].alt;
 
         next.addEventListener('click', OpenNext.bind(null, images, linkText));
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // SKILLS ANIMATION. SHOW UTILITY PERCENTAGE
 
     {
-        const container = document.querySelector(".skills__content");
+        const container = document.querySelector('.skills__content');
         let animationTime = 500;
         let isAnimPlayed = false;
 
@@ -237,35 +237,35 @@ document.addEventListener('DOMContentLoaded', () => {
             let skillsAnimationSettings = {
                 duration: animationTime,
                 iterations: 1,
-                easing: "ease-out",
-                fill: "forwards"
+                easing: 'ease-out',
+                fill: 'forwards'
             }
             return [skillsAnimation, skillsAnimationSettings];
         }
 
         function ShowScorebar(bar) {
-            let percentage = bar.querySelector(".skills__percentage").textContent;
-            let [anim, set] = AnimateSkills("0%", percentage);
+            let percentage = bar.querySelector('.skills__percentage').textContent;
+            let [anim, set] = AnimateSkills('0%', percentage);
 
             bar.animate(anim, set);
-            bar.classList.add("is-active");
+            bar.classList.add('is-active');
 
             return true;
         }
 
         function HideScorebar(bar) {
-            let percentage = bar.querySelector(".skills__percentage").textContent;
-            let [anim, set] = AnimateSkills(percentage, "0%");
+            let percentage = bar.querySelector('.skills__percentage').textContent;
+            let [anim, set] = AnimateSkills(percentage, '0%');
 
             bar.animate(anim, set);
-            bar.classList.remove("is-active");
+            bar.classList.remove('is-active');
 
             return false;
         }
 
         function FindParent(child) {
-            if (child.parentNode.className === "skills__skill-box") {
-                return child.parentNode.querySelector(".skills__utility");
+            if (child.parentNode.className.includes('skills__skill-box') === true) {
+                return child.parentNode.querySelector('.skills__utility');
             }
             else {
                 return FindParent(child.parentNode);
@@ -275,15 +275,15 @@ document.addEventListener('DOMContentLoaded', () => {
         container.addEventListener('mousemove', (event) => {
             let skill = event.target;
 
-            if (skill.className === "skills__skill-box") {
+            if (skill.className.includes('skills__skill-box') === true) {
 
-                skill = skill.querySelector(".skills__utility");
+                skill = skill.querySelector('.skills__utility');
 
                 if (isAnimPlayed != true) {
                     isAnimPlayed = ShowScorebar(skill);
                 }
             }
-            else if (skill.className != "skills__content") {
+            else if (skill.className.includes('skills__content') === false) {
 
                 skill = FindParent(skill);
 
@@ -297,10 +297,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let skill = event.target;
 
-            if (skill.className === "skills__skill-box") {
-                isAnimPlayed = HideScorebar(skill.querySelector(".skills__utility"));
+            if (skill.className.includes('skills__skill-box') === true) {
+                isAnimPlayed = HideScorebar(skill.querySelector('.skills__utility'));
             }
-            else if (skill.className != "skills__content") {
+            else if (skill.className.includes('skills__content') === false) {
                 skill = FindParent(skill);
                 isAnimPlayed = HideScorebar(skill);
             }
@@ -310,11 +310,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // SCROLL ANIMATION PROVIDED BY ME
 
     {
-        const main = document.getElementById("main");             // get the scrolled main container
-        const sections = document.querySelectorAll(".section");   // get all sections within the container
+        const main = document.getElementById('main');             // get the scrolled main container
+        const sections = document.querySelectorAll('.section');   // get all sections within the container
         let safezone = 10;
 
-        sections[0].classList.add("visible");                   // the first section is always visible
+        sections[0].classList.add('visible');                   // the first section is always visible
 
         function RevealSection() {
             sections.forEach(section => {
@@ -327,14 +327,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     && (mainScroll + safezone <= sectionBottom)) {         // while the bottom border is over it
                     
                     function ChangeClass() {
-                        console.log("class changed");
-                        section.classList.add("visible")
+                        section.classList.add('visible');
                     }
 
                     ChangeClass();      // then show the block
                 }
                 else {
-                    section.classList.remove("visible");        // if it's not, then hide it
+                    section.classList.remove('visible');        // if it's not, then hide it
                 }
             });
         }
