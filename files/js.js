@@ -124,14 +124,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     {
         const section = document.querySelector(".cases-section__container");
-        const caseWindow = document.querySelector(".case-window");
-        const tips = document.querySelector(".cases-section__content-block");
-
         let prevPos = section.scrollTop;
 
         function HideTips(event) {
 
             event.preventDefault();
+
+            const caseWindow = document.querySelector(".case-window");
+            const tips = document.querySelector(".cases-section__content-block");    
 
             let currentPos = section.scrollTop;
 
@@ -159,39 +159,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let currentImage = 0;
 
-        images[currentImage].style.display = "block";
-        linkText.innerHTML = images[currentImage].alt;
+        function OpenNext(img, text) {
+            img[currentImage].style.display = "none";
 
-        function OpenNext() {
-            images[currentImage].style.display = "none";
-
-            if (currentImage === images.length - 1) {
+            if (currentImage === img.length - 1) {
                 currentImage = 0;
             }
             else {
                 currentImage++;
             }
 
-            images[currentImage].style.display = "block";
-            linkText.innerHTML = images[currentImage].alt;
+            img[currentImage].style.display = "block";
+            text.innerHTML = img[currentImage].alt;
         }
 
-        function OpenPrev() {
-            images[currentImage].style.display = "none";
+        function OpenPrev(img, text) {
+            img[currentImage].style.display = "none";
 
             if (currentImage === 0) {
-                currentImage = images.length - 1;
+                currentImage = img.length - 1;
             }
             else {
                 currentImage--;
             }
 
-            images[currentImage].style.display = "block";
-            linkText.innerHTML = images[currentImage].alt;
+            img[currentImage].style.display = "block";
+            text.innerHTML = img[currentImage].alt;
         }
+        
+        images[currentImage].style.display = "block";
+        linkText.innerHTML = images[currentImage].alt;
 
-        next.addEventListener('click', OpenNext);
-        prev.addEventListener('click', OpenPrev);
+        next.addEventListener('click', OpenNext.bind(images, linkText));
+        prev.addEventListener('click', OpenPrev.bind(images, linkText));
     }
 
     // SKILLS ANIMATION. SHOW UTILITY PERCENTAGE
@@ -320,20 +320,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     {
         const burger = document.querySelector(".header__burger");
-        let menu = document.querySelector(".nav");
+        const links = document.querySelectorAll(".nav__link");
 
         burger.addEventListener('click', () => {
-            console.log("event is triggered");
+           
+            let menu = document.querySelector(".nav");
+            let bg = document.querySelector(".header__bg-on-mobile");
 
-            if (menu.className.includes("is-active") == true) {
-                console.log("hide");
+            if (menu.className.includes("is-active") === true) {
                 menu.classList.remove("is-active");
+                bg.classList.remove("is-active");
             }
             else {
-                console.log("show");
                 menu.classList.add("is-active");
+                bg.classList.add("is-active");
+
+                links.forEach(link => {
+                    link.addEventListener('click', () => {
+                        menu.classList.remove("is-active");
+                        bg.classList.remove("is-active");
+                    });
+                })
             }
         });
+
     }
 
 });
