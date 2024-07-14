@@ -208,13 +208,17 @@ document.addEventListener('DOMContentLoaded', () => {
         function HideTip(tip) {
             tip.style.display = "none";
         }
-        function MoveTip(tip) {
-            tip.style.transform = "translate("+ cursorX +"%," + cursorY + "%)";
+        function MoveTip(event) {
+            let containerSize = container.getBoundingClientRect();
+            let cursorX = (event.clientX - blob.offsetWidth) / containerSize.left * 100 - 60;
+            let cursorY = (event.clientY - blob.offsetHeight) / containerSize.top * 100 - 100;
+
+            tips.style.transform = "translate("+ cursorX +"%," + cursorY + "%)";
         }
 
         container.addEventListener('mouseover', ShowTip.bind(null, tips));
         container.addEventListener('mouseleave', HideTip.bind(null, tips));
-        container.addEventListener('mousemove', MoveTip.bind(null, tips));
+        container.addEventListener('mousemove', MoveTip);
     }
 
     // SKILLS ANIMATION. SHOW UTILITY PERCENTAGE
