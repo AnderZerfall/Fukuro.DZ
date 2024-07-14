@@ -152,10 +152,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // CASE SECTION PORTFOLIO BLOCK
 
     {
+        const container = document.querySelector('.case-window__image');
         const next = document.getElementById('next');
+        const nextMobile = document.getElementById('next-2');
         const prev = document.getElementById('prev');
-        const images = document.querySelectorAll(".case-window__img");
-        const linkText = document.querySelector(".case-window__case-name");
+        const images = document.querySelectorAll('.case-window__img');
+        const linkText = document.querySelector('.case-window__case-name');
 
         let currentImage = 0;
 
@@ -190,8 +192,9 @@ document.addEventListener('DOMContentLoaded', () => {
         images[currentImage].style.display = "block";
         linkText.innerHTML = images[currentImage].alt;
 
-        next.addEventListener('click', OpenNext.bind(images, linkText));
-        prev.addEventListener('click', OpenPrev.bind(images, linkText));
+        next.addEventListener('click', OpenNext.bind(null, images, linkText));
+        nextMobile.addEventListener('click', OpenNext.bind(null, images, linkText));
+        prev.addEventListener('click', OpenPrev.bind(null, images, linkText));
     }
 
     // SKILLS ANIMATION. SHOW UTILITY PERCENTAGE

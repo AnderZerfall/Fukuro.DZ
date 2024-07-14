@@ -1002,7 +1002,21 @@ body {
     background-color: #C653FF;
     border-radius: 100%;
 }
-
+.case-window__icons_right .case-window__icon_next{
+    display: none;
+}
+.case-window__tip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    /* display: none; */
+    height: 36px;
+    background-color: var(--bg-color);
+}
+.case-window__tip-message-block {
+    padding: 5% 0;
+}
 
 
 /* CONTACT SECTION */
@@ -1532,8 +1546,11 @@ body {
     .case-window__icons_left .case-window__icon:last-child {
         display: none;
     }
-    .case-window__icons_right .case-window__icon:not(:last-child) {
+    .case-window__icons_right .case-window__icon {
         display: none;
+    }
+    .case-window__icons_right .case-window__icon_next{
+        display: block;
     }
     .case-window__icons_right .case-window__icon {
         margin-left: 0;
