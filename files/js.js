@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
         prev.addEventListener('click', OpenPrev.bind(null, images, linkText));
     }
     
-    //TIPS
+    // TIPS
 
     {
         const container = document.querySelector('.case-window__content');
@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (menu.className.includes('is-active') === true) {
                 menu.classList.remove('is-active');
                 bg.classList.remove('is-active');
-                burger.classList.remove('is-presse');
+                burger.classList.remove('is-pressed');
             }
             else {
                 menu.classList.add('is-active');
