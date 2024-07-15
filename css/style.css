@@ -631,7 +631,7 @@ body {
     height: 100%;
     object-fit: cover;
     z-index: -2;
-    background: url('../img/Asset\ 2.webp');
+    background: url('../img/noise_bg.webp');
     background-size: cover;
     mix-blend-mode: soft-light;
     opacity: 0.6;
