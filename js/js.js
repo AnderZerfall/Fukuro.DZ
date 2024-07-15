@@ -1,8 +1,7 @@
 'use strict'
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
+
     // PRELOADER
 
     const mainPreloader = document.querySelector('.preloader');
