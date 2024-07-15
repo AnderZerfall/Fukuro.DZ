@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let slidesNumber = slides.length - 1;
         let index = 0;
 
-        let interval = 5000;
+        let interval = 7500;
 
         function TimeBarAnimation(timebar) {
             let animation = [
@@ -95,13 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         
             slides[index].style.zIndex = '-3';
-            slides[index].style.transform = 'translateX(' + (slidesNumber - index) * 115 +'%)';
+            slides[index].style.transform = 'translateX(' + (slidesNumber - index) * 110 +'%)';
 
             for (let i = 1; i <= slidesNumber; i++) {
                 if ((index + i) > slidesNumber) {
                     for (let j = 0; j <= (slidesNumber - 1); j++) {
                         slides[j].style.zIndex = '1';
-                        slides[j].style.transform = 'translateX(' + (slidesNumber - index) * 115 + '%)';
+                        slides[j].style.transform = 'translateX(' + (slidesNumber - index) * 110 + '%)';
                     }
                 }   
                 else {
