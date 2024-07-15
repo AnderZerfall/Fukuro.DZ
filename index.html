@@ -387,21 +387,21 @@
                                 </div>
                             </div>
                             <!-- FORM -->
-                            <form class="contact-section__form form">
+                            <form class="contact-section__form form" action="telegramm.php" method="POST">
                                 <div class="form__content">
                                     <div class="form__personal-info-fields">
                                         <div class="form__field">
                                             <label class="form__title">Your Name</label>
-                                            <input type="text" class="form__input-field input-field _req" placeholder="Cool Dude">
+                                            <input type="text" class="form__input-field input-field _req" placeholder="Cool Dude" name="user_name">
                                         </div>
                                         <div class="form__field">
                                             <label class="form__title">Your email</label>
-                                            <input type="text" class="form__input-field input-field input-field_email _req" placeholder="cool_dude@inbox.com">
+                                            <input type="text" class="form__input-field input-field input-field_email _req" placeholder="cool_dude@inbox.com" name="user_email">
                                         </div>
                                     </div>
                                     <div class="form__field form__field_your-message">
                                         <label class="form__title">Your message</label>
-                                        <textarea placeholder="Hey! I'm a Cool Dude, and I have the coolest project for ya" class="form__input-field input-field _req"></textarea>
+                                        <textarea placeholder="Hey! I'm a Cool Dude, and I have the coolest project for ya" class="form__input-field input-field _req" name="user_message"></textarea>
                                     </div>
                                     <button class="form__button button" type="submit">
                                         <div class="button__section">Send</div>

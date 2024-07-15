@@ -376,55 +376,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // SEND CONTACT FORM
 
-    {
-        const contactForm = document.querySelector('.form');
+    // {
+    //     const contactForm = document.querySelector('.form');
 
-        async function SendForm(form) {
-            if(ValidateForm(form) === true) {
+    //     async function SendForm(event, form) {
+    //         event.preventDefault();
 
-                // let formData = new formData(form);
+    //         if(ValidateForm(form) === true) {
 
-                // let response = await fetch('sendmail.php', {
-                //     method: 'POST',
-                //     body: formData
-                // });
+    //             let formData = new formData(form);
 
-                // if (response.ok) {
-                //     let result = await response.json();
-                //     alert(result.message);
-                //     formPreview.innerHTML = '';
-                //     form.reset();
-                // }
-                // else {
-                //     alert('Error');
-                // }
-            }
-        }
+    //             let response = await fetch('/telegramform/php/send-message-to-telegram.php', {
+    //                 method: 'POST',
+    //                 body: formData,
+    //                 processData: false,
+    //                 contentType: false
+    //             });
 
-        function EmailCheck(email) {
-            let re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    //             if (response.ok) {
+    //                 let result = await response.json();
+    //                 alert(result.message);
+    //                 formPreview.innerHTML = '';
+    //                 form.reset();
+    //             }
+    //             else {
+    //                 alert('Error');
+    //             }
+    //         }
+    //     }
 
-            return re.test(email.toLowerCase());
-        }
+    //     function EmailCheck(email) {
+    //         let re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
-        function ValidateForm(form) {
-            let fields = form.querySelectorAll('._req');
-            let hasPassed = true;
+    //         return re.test(email.toLowerCase());
+    //     }
 
-            fields.forEach(field => {
-                if (field.value === '') {
-                    hasPassed = false;
-                }
-                else if (field.className.includes('email') === true) {
-                    hasPassed = EmailCheck(field.value);
-                }
-            });
+    //     function ValidateForm(form) {
+    //         let fields = form.querySelectorAll('._req');
+    //         let hasPassed = true;
 
-            if (hasPassed === false) {
-                alert('form is empty');
-            }
-        }
+    //         fields.forEach(field => {
+    //             if (field.value === '') {
+    //                 hasPassed = false;
+    //             }
+    //             else if (field.className.includes('email') === true) {
+    //                 hasPassed = EmailCheck(field.value);
+    //             }
+    //         });
 
-        contactForm.addEventListener('submit', SendForm.bind(null, contactForm));
-    }
+    //         if (hasPassed === false) {
+    //             alert('form is empty');
+    //         }
+    //     }
+
+    //     contactForm.addEventListener('submit', SendForm.bind(this, contactForm));
+    // }
 });
