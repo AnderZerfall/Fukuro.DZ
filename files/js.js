@@ -374,10 +374,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // SEND CONTACT FORM
+    // SEND CONTACT FORM : TO DO
 
     {
-        const contactForm = document.querySelector('.form');
+
+        // Currently, that's not possible for GitHub to send form data directly
+        // so I'll just leave the code here for that time I'll be moving to
+        // personal hosting
+
+        // : FIX ME, PLS
+        
+        // const contactForm = document.querySelector('.form');
 
         // async function SendForm(event, form) {
         //     event.preventDefault();
@@ -405,36 +412,36 @@ document.addEventListener('DOMContentLoaded', () => {
         //     }
         // }
 
-        function EmailCheck(email) {
-            let re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+        // function EmailCheck(email) {
+        //     let re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
-            return re.test(email.toLowerCase());
-        }
+        //     return re.test(email.toLowerCase());
+        // }
 
-        function ValidateForm(form) {
-            let fields = form.querySelectorAll('._req');
-            let hasPassed = true;
+        // function ValidateForm(form) {
+        //     let fields = form.querySelectorAll('._req');
+        //     let hasPassed = true;
 
-            fields.forEach(field => {
-                if (field.value === '') {
-                    hasPassed = false;
-                }
-                else if (field.className.includes('email') === true) {
-                    hasPassed = EmailCheck(field.value);
-                }
-            });
+        //     fields.forEach(field => {
+        //         if (field.value === '') {
+        //             hasPassed = false;
+        //         }
+        //         else if (field.className.includes('email') === true) {
+        //             hasPassed = EmailCheck(field.value);
+        //         }
+        //     });
 
-            if (hasPassed === false) {
-                alert('form is empty');
-            }
-        }
+        //     if (hasPassed === false) {
+        //         alert('form is empty');
+        //     }
+        // }
 
 
-        Pageclip.form(contactForm, {
-            onSubmit: ValidateForm(form),
-            onResponse: function (error, response) { },
-            successTemplate: '<span>Thank you!</span>'
-        })
+        // Pageclip.form(contactForm, {
+        //     onSubmit: ValidateForm(form),
+        //     onResponse: function (error, response) { },
+        //     successTemplate: '<span>Thank you!</span>'
+        // })
 
         // contactForm.addEventListener('submit', ValidateForm.bind(contactForm));
     }
