@@ -1453,7 +1453,7 @@ body {
         justify-content: center;
         flex-direction: column;
     }
-    .header__burder {
+    .header__burger {
         display: block;
     }
     .header__burger-icon {
@@ -1514,10 +1514,8 @@ body {
         text-align: center;
         margin-bottom: 10%;
     }
-    .section {
-        opacity: 1;
-    }
     .main {
+        padding-top: 5%;
         scroll-snap-type: none;
         scroll-behavior: smooth;
     }
@@ -1695,6 +1693,7 @@ body {
         margin-bottom: 0;
     }
     .section {
+        opacity: 1;
         height: auto;
         min-height: 100%;
     }
