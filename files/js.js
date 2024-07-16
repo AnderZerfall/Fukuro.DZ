@@ -96,13 +96,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         
             slides[index].style.zIndex = '-3';
-            slides[index].style.transform = 'translateX(' + (slidesNumber - index) * 110 +'%)';
+            slides[index].style.transform = 'translateX(' + (slidesNumber - index) * 100 +'%)';
 
             for (let i = 1; i <= slidesNumber; i++) {
                 if ((index + i) > slidesNumber) {
                     for (let j = 0; j <= (slidesNumber - 1); j++) {
                         slides[j].style.zIndex = '1';
-                        slides[j].style.transform = 'translateX(' + (slidesNumber - index) * 110 + '%)';
+                        slides[j].style.transform = 'translateX(' + (slidesNumber - index) * 100 + '%)';
                     }
                 }   
                 else {
