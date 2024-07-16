@@ -407,11 +407,19 @@ document.addEventListener('DOMContentLoaded', () => {
         // personal hosting
 
         // : FIX ME, PLS
-        const sendbutton = document.querySelector('.form__button');
+        // const sendbutton = document.querySelector('.form__button');
 
-        sendbutton.addEventListener('click', () => {
-            location = 'thank-you.html';
-        });
+        // sendbutton.addEventListener('click', () => {
+        //     location = 'thank-you.html';
+        // });
+        const form = document.querySelector('.form');
+
+        Pageclip.form(form, {
+            onSubmit: function() {  location = 'thank-you.html' },
+            onResponse: function (error, response) { },
+            // successTemplate: '<span>Thank you!</span>'
+        })
+        
         // const contactForm = document.querySelector('.form');
 
         // async function SendForm(event, form) {
