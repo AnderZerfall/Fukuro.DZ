@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
             successTemplate: function() {
                 console.log('ok'); 
                 location = 'thank-you.html' }
-        })
+        });
         
         // const contactForm = document.querySelector('.form');
 
