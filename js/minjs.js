@@ -1,6 +1,8 @@
 'use strict'
 document.addEventListener('DOMContentLoaded',()=>{const mainPreloader=document.querySelector('.preloader');window.onload=()=>{setTimeout(function(){mainPreloader.style.display='none'},100)}
-{}
+{const cursor=document.getElementById('cursor');const buttons=document.querySelectorAll('.button');function MoveCursor(event){cursor.style.visibility='visible';cursor.style.left=event.clientX-cursor.offsetWidth/2+'px';cursor.style.top=event.clientY-cursor.offsetHeight/2+'px'}
+function HootHoot(event){MoveCursor(event);let hoot=document.createElement('p');hoot.classList.add('hoot');hoot.innerText='Hoot!';cursor.appendChild(hoot);setTimeout(function(){hoot.remove()},700)}
+window.addEventListener('mousemove',MoveCursor);window.addEventListener('click',HootHoot)}
 {const blob=document.getElementById('blob');const blobContainer=document.querySelector('.hero-section__logo-blob');const blobSection=document.querySelector('.hero-section');function MoveBlobByMouse(event){let[cursorX,cursorY]=FindCursorPosition(event);blob.style.transition='all 100ms ease';blob.style.transform='translate('+cursorX+'%,'+cursorY+'%)'}
 function BlobReset(){blob.style.transition='all 500ms ease';blob.style.transform='translate(0)'}
 function FindCursorPosition(event){let containerSize=blobContainer.getBoundingClientRect();let cursorX=(event.clientX-blob.offsetWidth)/containerSize.left*100-60;let cursorY=(event.clientY-blob.offsetHeight)/containerSize.top*100-100;return[cursorX,cursorY]}
@@ -23,7 +25,7 @@ img[currentImage].style.display='block';text.innerHTML=img[currentImage].alt}
 images[currentImage].style.display='block';linkText.innerHTML=images[currentImage].alt;next.addEventListener('click',OpenNext.bind(null,images,linkText));nextMobile.addEventListener('click',OpenNext.bind(null,images,linkText));prev.addEventListener('click',OpenPrev.bind(null,images,linkText))}
 {const container=document.querySelector('.case-window__content');const tips=document.querySelector('.case-window__tip');function ShowTip(tip){tip.classList.add('tip-is-shown')}
 function HideTip(tip){tip.classList.remove('tip-is-shown')}
-function MoveTip(event){let cursorX=event.pageX/window.innerWidth*100;let cursorY=event.pageY/window.innerHeight*100;tips.style.left=cursorX+'%';tips.style.top=cursorY+'%'}
+function MoveTip(event){let cursorX=event.clientX-tips.offsetWidth;let cursorY=event.clientY-tips.offsetHeight-100;tips.style.left=cursorX+'px';tips.style.top=cursorY+'px'}
 container.addEventListener('mouseover',ShowTip.bind(null,tips));container.addEventListener('mouseleave',HideTip.bind(null,tips));container.addEventListener('mousemove',MoveTip)}
 {const container=document.querySelector('.skills__content');let animationTime=500;let isAnimPlayed=!1;function AnimateSkills(startPoint,endPoint){let skillsAnimation=[{width:startPoint},{width:endPoint,}];let skillsAnimationSettings={duration:animationTime,iterations:1,easing:'ease-out',fill:'forwards'}
 return[skillsAnimation,skillsAnimationSettings]}
@@ -35,4 +37,4 @@ container.addEventListener('mousemove',(event)=>{let skill=event.target;if(skill
 ChangeClass()}else{section.classList.remove('visible')}})}
 main.addEventListener('scroll',RevealSection)}
 {const burger=document.querySelector('.header__burger');const links=document.querySelectorAll('.nav__link');burger.addEventListener('click',()=>{let menu=document.querySelector('.nav');let bg=document.querySelector('.header__bg-on-mobile');if(menu.className.includes('is-active')===!0){menu.classList.remove('is-active');bg.classList.remove('is-active');burger.classList.remove('is-pressed')}else{menu.classList.add('is-active');bg.classList.add('is-active');burger.classList.add('is-pressed');links.forEach(link=>{link.addEventListener('click',()=>{menu.classList.remove('is-active');bg.classList.remove('is-active');burger.classList.remove('is-pressed')})})}})}
-{}})
+{const form=document.querySelector('.form');Pageclip.form(form,{onSubmit:function(){},onResponse:function(error,response){location='thank-you.html'},successTemplate:'<span></span>'})}})
