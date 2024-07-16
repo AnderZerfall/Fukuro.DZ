@@ -23,10 +23,6 @@ img[currentImage].style.display='block';text.innerHTML=img[currentImage].alt}
 function OpenPrev(img,text){img[currentImage].style.display='none';if(currentImage===0){currentImage=img.length-1}else{currentImage--}
 img[currentImage].style.display='block';text.innerHTML=img[currentImage].alt}
 images[currentImage].style.display='block';linkText.innerHTML=images[currentImage].alt;next.addEventListener('click',OpenNext.bind(null,images,linkText));nextMobile.addEventListener('click',OpenNext.bind(null,images,linkText));prev.addEventListener('click',OpenPrev.bind(null,images,linkText))}
-{const container=document.querySelector('.case-window__content');const tips=document.querySelector('.case-window__tip');function ShowTip(tip){tip.classList.add('tip-is-shown')}
-function HideTip(tip){tip.classList.remove('tip-is-shown')}
-function MoveTip(event){let cursorX=event.clientX-tips.offsetWidth;let cursorY=event.clientY-tips.offsetHeight-100;tips.style.left=cursorX+'px';tips.style.top=cursorY+'px'}
-container.addEventListener('mouseover',ShowTip.bind(null,tips));container.addEventListener('mouseleave',HideTip.bind(null,tips));container.addEventListener('mousemove',MoveTip)}
 {const container=document.querySelector('.skills__content');let animationTime=500;let isAnimPlayed=!1;function AnimateSkills(startPoint,endPoint){let skillsAnimation=[{width:startPoint},{width:endPoint,}];let skillsAnimationSettings={duration:animationTime,iterations:1,easing:'ease-out',fill:'forwards'}
 return[skillsAnimation,skillsAnimationSettings]}
 function ShowScorebar(bar){let percentage=bar.querySelector('.skills__percentage').textContent;let[anim,set]=AnimateSkills('0%',percentage);bar.animate(anim,set);bar.classList.add('is-active');return!0}
