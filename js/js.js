@@ -401,11 +401,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     {
 
+
         // Currently, that's not possible for GitHub to send form data directly
         // so I'll just leave the code here for that time I'll be moving to
         // personal hosting
 
         // : FIX ME, PLS
+
+        const form = document.querySelector('.form');
+
+        Pageclip.form(form, {
+            onSubmit: function() { console.log('ok') },
+            onResponse: function (error, response) { },
+            successTemplate: '<span>Thank you!</span>'
+        })
         
         // const contactForm = document.querySelector('.form');
 
