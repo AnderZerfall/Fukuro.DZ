@@ -12,10 +12,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     }
 
+    
     // CUSTOM CURSOR
 
     {
         // cool stuff will be here (i promise)
+        const cursor = document.getElementById('cursor');
+        const buttons = document.querySelectorAll('.button');
+
+        function MoveCursor(event) {
+            cursor.style.visibility = 'visible';
+            cursor.style.left = event.clientX - cursor.offsetWidth / 2 + 'px';
+            cursor.style.top = event.clientY - cursor.offsetHeight / 2 + 'px';
+        }
+        function HootHoot(event) {
+            MoveCursor(event);
+            let hoot = document.createElement('p');
+            hoot.classList.add('hoot');
+            hoot.innerText = 'Hoot!';
+            cursor.appendChild(hoot);
+            setTimeout(function() {
+                hoot.remove();
+            }, 700);
+        }
+
+        window.addEventListener('mousemove', MoveCursor);
+        window.addEventListener('click', HootHoot);
+        
     }
     
     // BLOB ANIMATION
@@ -209,10 +232,10 @@ document.addEventListener('DOMContentLoaded', () => {
             tip.classList.remove('tip-is-shown');
         }
         function MoveTip(event) {
-            let cursorX = event.pageX / window.innerWidth * 100;
-            let cursorY = event.pageY / window.innerHeight * 100;
-            tips.style.left = cursorX + '%';
-            tips.style.top = cursorY + '%';
+            let cursorX = event.clientX - tips.offsetWidth;
+            let cursorY = event.clientY - tips.offsetHeight - 100;
+            tips.style.left = cursorX + 'px';
+            tips.style.top = cursorY + 'px';
         }
 
         container.addEventListener('mouseover', ShowTip.bind(null, tips));
