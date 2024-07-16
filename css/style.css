@@ -1087,6 +1087,10 @@ body {
 .case-window__icons_right .case-window__icon_next{
     display: none;
 }
+.case-window__image-link {
+    display: flex;
+    justify-content: center;
+}
 
 /* CONTACT SECTION */
 
