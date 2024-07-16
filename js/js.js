@@ -407,15 +407,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // personal hosting
 
         // : FIX ME, PLS
+        const sendbutton = document.querySelector('.form__button');
 
-        const form = document.querySelector('.form');
-
-        Pageclip.form(form, {
-            onSubmit: function() { console.log('ok') },
-            onResponse: function (error, response) { },
-            successTemplate: '<span>Thank you!</span>'
-        })
-        
+        sendbutton.addEventListener('click', () => {
+            location = 'thank-you.html';
+        });
         // const contactForm = document.querySelector('.form');
 
         // async function SendForm(event, form) {
