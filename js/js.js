@@ -417,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Pageclip.form(form, {
             onSubmit: function() { },
             onResponse: function (error, response) { location = 'thank-you.html'  },
-            successTemplate: ''
+            successTemplate: '<span></span>'
         });
         
         // const contactForm = document.querySelector('.form');
