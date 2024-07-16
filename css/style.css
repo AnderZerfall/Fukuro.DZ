@@ -73,7 +73,6 @@ body {
     min-height: 100vh;
     background-color: var(--bg-color);
     overflow: hidden;
-    cursor: none;
 }
 .wrapper {
     width: 100%;
@@ -290,22 +289,6 @@ body {
     z-index: 0;
     top:0;
     left:0;
-    opacity: 0.6;
-}
-.custom-cursor__item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width:30px;
-    height: 30px;
-    border: 3px solid var(--accent-color);
-    border-radius: 100%;
-}
-.custom-cursor__item-mid {
-    width:10px;
-    height: 10px;
-    background-color: var(--accent-color);
-    border-radius: 100%;
 }
 .hoot {
     font-family: var(--montserrat);
@@ -923,59 +906,10 @@ body {
     transform: translateY(-3%);
     transition: all 500ms ease-in-out;
 }
-.case-window__tip {
-    visibility: hidden;
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 10px;
-    height: 60px;
-    background-color: var(--bg-color);
-    padding: 0 2%;
-    opacity: 0;
-    flex-shrink: 0;
-    transform: translateY(50%);
-    transition: opacity 500ms ease-in-out;
-}
-.tip-is-shown {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 500ms ease,
-                transform 250ms ease-out;
-    animation: fadeOut 200ms ease;
-    animation-delay: 3s;
-    animation-fill-mode: forwards;
-}
-@keyframes fadeOut {
-    from {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateY(50%);
-        opacity: 0;
-    }
-}
-.case-window__tip-message-block {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    flex-shrink: 0;
-}
-.case-window__tip-message {
-    text-align: center;
-    font-family: var(--montserrat);
-    color: var(--text-color);
-    font-size: var(--small-text);
-    flex-shrink: 0;
-}
 .case-window {
     position: relative;
     width: 95%;
-    height: 95%;
+    height: 100%;
     background-color: var(--card-bg);
     backdrop-filter: blur(30px);
     box-shadow: 0 15px 50px var(--shadow-dark);

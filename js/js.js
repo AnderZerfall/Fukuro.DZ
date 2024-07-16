@@ -218,30 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
         nextMobile.addEventListener('click', OpenNext.bind(null, images, linkText));
         prev.addEventListener('click', OpenPrev.bind(null, images, linkText));
     }
-    
-    // TIPS
-
-    {
-        const container = document.querySelector('.case-window__content');
-        const tips = document.querySelector('.case-window__tip');
-        
-        function ShowTip(tip) {
-            tip.classList.add('tip-is-shown');
-        }
-        function HideTip(tip) {
-            tip.classList.remove('tip-is-shown');
-        }
-        function MoveTip(event) {
-            let cursorX = event.clientX - tips.offsetWidth;
-            let cursorY = event.clientY - tips.offsetHeight - 100;
-            tips.style.left = cursorX + 'px';
-            tips.style.top = cursorY + 'px';
-        }
-
-        container.addEventListener('mouseover', ShowTip.bind(null, tips));
-        container.addEventListener('mouseleave', HideTip.bind(null, tips));
-        container.addEventListener('mousemove', MoveTip);
-    }
 
     // SKILLS ANIMATION. SHOW UTILITY PERCENTAGE
 
