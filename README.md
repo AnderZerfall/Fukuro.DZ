@@ -3,10 +3,9 @@
 !!! THIS PROJECT IS UNDER CONSTRUCTION.
 It's going to be rebuilt
 
-![](https://imgur.com/IHPLZi1.gif)
-![](https://imgur.com/NsykHjS.gif)
+![](https://imgur.com/wu01ZFe.gif)
 
-### See DEMO here: https://no-conflicts-shop.netlify.app/
+### See DEMO here: [here](https://anderzerfall.github.io/Fukuro.DZ/src/index.html)
 
 Hello there, FUKURO is on the line!
 Here is my personal project - FUKURO portfolio website!
@@ -26,7 +25,7 @@ That was the time when I had only started learning JS, so I tried my best to und
 - *Implementing various event handlers for practicing in event loop understanding*
 
 
-![](https://imgur.com/atRVGK2.gif)
+![](https://imgur.com/PkaIS8s.gif)
 
  ## Key features
 
