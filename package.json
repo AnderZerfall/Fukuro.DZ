@@ -1,0 +1,19 @@
+{
+  "name": "k-lingua-website",
+  "version": "1.0.0",
+  "description": "1. Create a repo using this template\r 1. Replace `<your_account>` and `<repo_name>` with your Github username and the new repo name\r     - [DEMO LINK](https://<your_account>.github.io/<repo_name>/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-webmanifest": "^2.13.3",
+    "eslint": "^9.19.0"
+  },
+  "dependencies": {
+    "parcel": "^2.13.3"
+  }
+}
